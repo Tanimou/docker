@@ -1,47 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-<record id="ViewCarMenu_action" model="ir.actions.act_window">
-    <field name="name">ViewCar</field>
-    <field name="res_model">car.car</field>
-    <field name="view_mode">tree,form,kanban</field>
-    <field name="type">ir.actions.act_window</field>
-    <field name="context">{}</field>
-    <field name="help" type="html">
-    <p class="nameHelp">
-        Access to the Car menu
-       </p> 
-    </field>
-</record>
 
-<record id="ViewTicketMenu_action" model="ir.actions.act_window">
-    <field name="name">ViewTicket</field>
-    <field name="res_model">car.ticket</field>
-    <field name="view_mode">tree,form,kanban</field>
-    <field name="type">ir.actions.act_window</field>
-    <field name="context">{}</field>
-    <field name="help" type="html">
-    <p class="nameHelp">
-        Access to the Ticket menu
-       </p> 
-    </field>
-</record>
-
-<record id="ViewTravelMenu_action" model="ir.actions.act_window">
-    <field name="name">ViewTravel</field>
-    <field name="res_model">car.travel</field>
-    <field name="view_mode">tree,form,kanban</field>
-    <field name="type">ir.actions.act_window</field>
-    <field name="context">{}</field>
-    <field name="help" type="html">
-    <p class="nameHelp">
-        Access to the Travel menu
-       </p> 
+<record id="cardetails_view_form" model="ir.ui.view">
+    <field name="name">car_details.view.form</field>
+    <field name="model">car.car</field>
+    <field name="arch" type="xml">
+        <form string="">
+            <sheet>
+                <group>
+                    
+                </group>
+            </sheet>
+        </form>
     </field>
 </record>
 
     <menuitem
         id="car_menu"
         name="Car"
+        web_icon="car_management,static/description/icon.png"
         sequence="10"/>
 
     <menuitem
