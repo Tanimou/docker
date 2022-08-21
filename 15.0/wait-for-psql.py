@@ -28,5 +28,5 @@ if __name__ == '__main__':
         time.sleep(1)
 
     if error:
-        print("Database connection failure: %s" % error, file=sys.stderr)
+        print(f"Database connection failure: {error}", file=sys.stderr)
         sys.exit(1)
