@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 import argparse
-import psycopg2
 import sys
 import time
 
+import psycopg2
 
 if __name__ == '__main__':
     arg_parser = argparse.ArgumentParser()
     arg_parser.add_argument('--db_host', required=True)
-    arg_parser.add_argument('--db_port', required=True)
+    arg_parser.add_argument('--db_port', required=False)
     arg_parser.add_argument('--db_user', required=True)
     arg_parser.add_argument('--db_password', required=True)
     arg_parser.add_argument('--timeout', type=int, default=5)
@@ -28,5 +28,5 @@ if __name__ == '__main__':
         time.sleep(1)
 
     if error:
-        print("Database connection failure: %s" % error, file=sys.stderr)
+        print(f"Database connection failure: {error}", file=sys.stderr)
         sys.exit(1)
