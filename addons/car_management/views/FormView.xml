@@ -98,7 +98,7 @@
     <field name="arch" type="xml">
         <form string="">
                   <button string="Details Driver" name="%(hr.open_view_employee_list_my)d" type="action"/>
-                 
+                 <button string="Change Driver" name="changedriver" type="object" class="oe_highlight"/>
                   
                 
             <sheet>
