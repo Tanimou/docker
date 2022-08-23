@@ -5,10 +5,12 @@ class CarTravel(models.Model):
     _description="All information about your travel"
     #create a relation between travel and car
     car=fields.Many2one('car.car',string='Car',required=True)
+    CarModel=fields.Char(related='car.CarModel')
     StartPoint=fields.Char('StartPoint',required=True)
     DestinationPoint=fields.Char('DestinationPoint',required=True)
     StartDate=fields.Datetime('StartDate',required=True)
     EndDate=fields.Datetime('EndDate',required=True)
     Duration=fields.Integer('Duration',required=True)
     #get NumPlace from car
-    NumPlace=fields.Integer('NumPlace',required=True)
+    NumPlace=fields.Integer(related='car.NumPlace')
+    Info=fields.Text('Info',required=True)

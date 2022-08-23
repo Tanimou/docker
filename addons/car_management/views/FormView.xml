@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="CarDetails_view_tree" model="ir.ui.view">
+        <field name="name">CarDetails.view.tree</field>
+        <field name="model">car.car</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="CarModel" />
+                <field name="Manufacturer" />
+                <field name="NumPlace" />
+                <field name="FuelType" />
+                <field name="EmployeeName" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="TravelDetails_view_tree" model="ir.ui.view">
+        <field name="name">CarDetails.view.tree</field>
+        <field name="model">car.travel</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="CarModel" />
+                <field name="StartPoint" />
+                <field name="DestinationPoint" />
+                <field name="StartDate" />
+                <field name="EndDate" />
+                <field name="NumPlace" />
+                <field name="Info" /> 
+            </tree>
+        </field>
+    </record>
+
+    <record id="TicketDetails_view_tree" model="ir.ui.view">
+        <field name="name">CarDetails.view.tree</field>
+        <field name="model">car.ticket</field>
+        <field name="arch" type="xml">
+            <tree string="">
+            <field name="ClientName" />
+            <field name="Info" />
+                    <field name="Date" />
+                    <field name="Price" />
+                    <field name="Car" />
+                    <field name="DestinationPoint" />
+                    <field name="StartTime" />
+            </tree>
+        </field>
+    </record>
+
+        <record id="CarDetails_view_search" model="ir.ui.view">
+        <field name="name">CarDetails.view.search</field>
+        <field name="model">car.car</field>
+        <field name="arch" type="xml">
+            <search string="">
+                   <field name="CarModel" filter_domain="['|',('CarModel','ilike',self),('EmployeeName','ilike',self)]"/>
+                <field name="Manufacturer" />
+                <field name="NumPlace" />
+                <field name="FuelType" />
+                <field name="EmployeeName" />
+            </search>
+        </field>
+    </record>
+
+           <record id="TravelDetails_view_search" model="ir.ui.view">
+        <field name="name">TravelDetails.view.search</field>
+        <field name="model">car.travel</field>
+        <field name="arch" type="xml">
+            <search string="">
+              <field name="CarModel" />
+                <field name="StartPoint" />
+                <field name="DestinationPoint" />
+                <field name="StartDate" />
+                <field name="EndDate" />
+                <field name="NumPlace" />
+                
+            </search>
+        </field>
+    </record>
+
+               <record id="TicketDetails_view_search" model="ir.ui.view">
+        <field name="name">TicketDetails.view.search</field>
+        <field name="model">car.ticket</field>
+        <field name="arch" type="xml">
+            <search string="">
+       <field name="ClientName" />
+                    <field name="Date" />
+                    <field name="Price" />
+                    <field name="Car" />
+                    <field name="DestinationPoint" />
+                    <field name="StartTime" />
+            </search>
+        </field>
+    </record>
+
+<record id="cardetails_view_form" model="ir.ui.view">
+    <field name="name">car_details.view.form</field>
+    <field name="model">car.car</field>
+    <field name="arch" type="xml">
+        <form string="">
+            <sheet>
+                <group>
+                    <field name="CarModel" />
+                    <field name="Manufacturer" />
+                    <field name="NumPlace" />
+                    <field name="FuelType" />
+                    <field name="EmployeeName"/>
+                    
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+<record id="traveldetails_view_form" model="ir.ui.view">
+    <field name="name">travel_details.view.form</field>
+    <field name="model">car.travel</field>
+    <field name="arch" type="xml">
+        <form string="">
+            <sheet>
+                <group>
+                    <field name="car" />
+                    <field name="StartPoint" />
+                    <field name="DestinationPoint" />
+                    <field name="StartDate" />
+                    <field name="EndDate" />
+                    <field name="Duration" />
+                    <field name="NumPlace" /> 
+                    <field name="Info" /> 
+                    
+                </group>
+            </sheet>
+
+
+        </form>
+    </field>
+</record>
+
+<record id="ticketdetails_view_form" model="ir.ui.view">
+    <field name="name">ticket_details.view.form</field>
+    <field name="model">car.ticket</field>
+    <field name="arch" type="xml">
+        <form string="">
+            <sheet>
+                <group>
+                    <field name="ClientName" />
+                    <field name="Info" />
+                    <field name="Date" />
+                    <field name="Price" />
+                    <field name="Car" />
+                    <field name="DestinationPoint" />
+                    <field name="StartTime" />
+                </group>
+            </sheet>
+
+
+        </form>
+    </field>
+</record>
+
+</odoo>

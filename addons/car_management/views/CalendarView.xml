@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="travel_view_calendar" model="ir.ui.view">
+        <field name="name">travel.view.calendar</field>
+        <field name="model">car.travel</field>
+        <field name="arch" type="xml">
+            <calendar string="Travel Calendar" date_start="StartDate" color="DestinationPoint" date_stop="EndDate">
+                <field name="StartDate" />
+                <field name="StartPoint"/>
+                <field name="EndDate" />
+                <field name="DestinationPoint" />
+            </calendar>
+        </field>
+    </record>
+
+</odoo>

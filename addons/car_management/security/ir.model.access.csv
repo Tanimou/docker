@@ -1,1 +1,7 @@
-"id","name","model_id","group_id:id","perm_read","perm_write
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"car_management.access_car_car","access_car_car","car_management.model_car_car","base.group_user","1","1","1","1"
+"car_management.access_car_ticket","access_car_ticket","car_management.model_car_ticket","base.group_user","1","1","1","1"
+"car_management.access_car_travel","access_car_travel","car_management.model_car_travel","base.group_user","1","1","1","1"
+
+
+,,,,,,,

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+<record id="driverdetails_view_form" model="ir.ui.view">
+    <field name="name">driver_details.view.form</field>
+    <field name="model">driver.wizard</field>
+    <field name="arch" type="xml">
+        <form string="">
+            <sheet>
+                <group>
+
+                    <field name="EmployeeName"/>
+                    
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+</odoo>

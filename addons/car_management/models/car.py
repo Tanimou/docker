@@ -10,3 +10,4 @@ class Carcar(models.Model):
     NumPlace=fields.Integer('NumPlace',required=True)
     FuelType=fields.Selection([('Diesel','Diesel'),('Gasoline','Gasoline'),('Hybrid','Hybrid'),('Electric','Electric')],string='FuelType',required=True)
     #create a relation between car and driver
+    EmployeeName=fields.Many2one('hr.employee','Driver',required=True)
