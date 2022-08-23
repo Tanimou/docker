@@ -34,8 +34,6 @@
     <field name="help" type="html">
     <field name="target">new</field>
     </field>
-
-    
 </record>
 
 
