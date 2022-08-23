@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+<menuitem
+        id="car_menu"
+        name="Car"
+        web_icon="car_management,static/description/icon.png"
+        sequence="10"/>
+
+<menuitem
+        action="ViewCarMenu_action"
+        id="CarDetails_menu"
+        name="Car Details"
+        parent="car_menu"
+        sequence="10"/>
+<menuitem
+        action="ViewTravelMenu_action"
+        id="TravelDetails_menu"
+        name="Travel Details"
+        parent="car_menu"
+        sequence="10"/>
+
+<menuitem
+        action="ViewTicketMenu_action"
+        id="TicketDetails_menu"
+        name="Ticket Details"
+        parent="car_menu"
+        sequence="10"/>
 <record id="ViewCarMenu_action" model="ir.actions.act_window">
     <field name="name">ViewCar</field>
     <field name="res_model">car.car</field>
@@ -40,35 +65,4 @@
        </p> 
     </field>
 </record>
-
-
-
-
-
-<menuitem
-        id="car_menu"
-        name="Car"
-        web_icon="car_management,static/description/icon.png"
-        sequence="10"/>
-
-<menuitem
-        action="ViewCarMenu_action"
-        id="CarDetails_menu"
-        name="Car Details"
-        parent="car_menu"
-        sequence="10"/>
-<menuitem
-        action="ViewTravelMenu_action"
-        id="TravelDetails_menu"
-        name="Travel Details"
-        parent="car_menu"
-        sequence="10"/>
-
-<menuitem
-        action="ViewTicketMenu_action"
-        id="TicketDetails_menu"
-        name="Ticket Details"
-        parent="car_menu"
-        sequence="10"/>
-
 </odoo>

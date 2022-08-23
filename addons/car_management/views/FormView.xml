@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-
     <record id="CarDetails_view_tree" model="ir.ui.view">
         <field name="name">CarDetails.view.tree</field>
         <field name="model">car.car</field>
@@ -98,14 +97,21 @@
     <field name="model">car.car</field>
     <field name="arch" type="xml">
         <form string="">
+                  <button string="Details Driver" name="%(hr.open_view_employee_list_my)d" type="action"/>
+                 
+                  
+                
             <sheet>
                 <group>
+                 
+                  
+                    
                     <field name="CarModel" />
                     <field name="Manufacturer" />
                     <field name="NumPlace" />
                     <field name="FuelType" />
                     <field name="EmployeeName"/>
-                    
+                
                 </group>
             </sheet>
         </form>

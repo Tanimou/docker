@@ -10,7 +10,7 @@
     'category': 'car',
     'sequence': -100,
     'depends': ['base','hr','contacts'],
-    'data': ['security/ir.model.access.csv','views/menu.xml','views/FormView.xml','views/CalendarView.xml','wizard/driverdetails.xml'],#used to import all xml files
+    'data': ['security/ir.model.access.csv','wizard/driverdetails.xml','views/menu.xml','views/FormView.xml','views/CalendarView.xml'],#used to import all xml files
     'demo': [],#demo database
     'installable': True,
     'auto_install': False,
