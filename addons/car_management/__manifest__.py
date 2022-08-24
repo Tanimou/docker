@@ -9,7 +9,7 @@
     'author': 'Progistack',
     'category': 'car',
     'sequence': -100,
-    'depends': ['base','hr','contacts'],
+    'depends': ['base','hr','contacts','mail'],
     'data': ['security/ir.model.access.csv','wizard/driverdetails.xml','views/menu.xml','views/FormView.xml','views/CalendarView.xml'],#used to import all xml files
     'demo': [],#demo database
     'installable': True,

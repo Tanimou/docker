@@ -13,7 +13,7 @@
                 <group>
             <group>
                     <field name="EmployeeName"/>
-                    <button string="Confirner" name="changedriver" type="object" class="oe_highlight"/>
+                    <button string="Confirmer" name="changedriver" type="object" class="oe_highlight"/>
                 </group>
                  </group>
             </sheet>
@@ -23,7 +23,27 @@
     </field>
 </record>
 
-
+<!--<record id="changecar_view_form" model="ir.ui.view">
+    <field name="name">changecar.view.form</field>
+    <field name="model">driver.wizard</field>
+    <field name="arch" type="html">
+    
+        <form string="" save="0">
+             
+            <sheet>
+           
+                <group>
+            <group>
+                    <field name="CarModel"/>
+                    <button string="Confimner" name="changecar" type="object" class="oe_highlight"/>
+                </group>
+                 </group>
+            </sheet>
+                 
+        </form>
+        
+    </field>
+</record>-->
 <record id="changedriver_action" model="ir.actions.act_window">
     <field name="name">ChangeDriver.action</field>
     <field name="res_model">driver.wizard</field>
@@ -34,6 +54,17 @@
     <field name="target">new</field>
    
 </record>
+
+<!--<record id="changecar_action" model="ir.actions.act_window">
+    <field name="name">ChangeCar.action</field>
+    <field name="res_model">driver.wizard</field>
+       <field name="type">ir.actions.act_window</field>
+    <field name="view_mode">form</field>
+    <field name="context">{}</field>
+  
+    <field name="target">new</field>
+   
+</record>-->
 
 
     

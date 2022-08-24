@@ -57,6 +57,16 @@
                 <field name="NumPlace" />
                 <field name="FuelType" />
                 <field name="EmployeeName" />
+                <filter name="filter_Manufacturer" string="Manufacturer"  context="{'group_by': 'Manufacturer'}"/>
+                <filter name="filter_Gasoline" string="Gasoline" domain="[('FuelType', '=', 'Gasoline')]" />
+                  <filter name="filter_Electric" string="Electric" domain="[('FuelType', '=', 'Electric')]" />
+                    <filter name="filter_Diesel" string="Diesel" domain="[('FuelType', '=', 'Diesel')]" />
+                      <filter name="filter_Hybrid" string="Hybrid" domain="[('FuelType', '=', 'Hybrid')]" />
+                   <filter name="filter_EmployeeName" string="Driver" context="{'group_by': 'EmployeeName'}" />
+                    <filter name="filter_FuelType" string="Fuel Type" context="{'group_by': 'FuelType'}" />
+                      <searchpanel>
+                      <field name="FuelType" string="Fuel Type" enable_counters="1" select="multi" />
+                   </searchpanel>
             </search>
         </field>
     </record>
@@ -72,7 +82,9 @@
                 <field name="StartDate" />
                 <field name="EndDate" />
                 <field name="NumPlace" />
-                
+                      <searchpanel>
+                      <field name="car" string="Car" enable_counters="1" />
+                        </searchpanel>
             </search>
         </field>
     </record>
@@ -97,23 +109,33 @@
     <field name="model">car.car</field>
     <field name="arch" type="xml">
         <form string="">
+        <header>
                   <button string="Details Driver" name="detailchauffeuraction" type="object"/>
-                 <button string="Change Driver" name="%(changedriver_action)d" type="action" class="oe_highlight"/>
-                  
+                 <button string="Change Driver" name="%(changedriver_action)d" type="action"/>
+                    <button string="Change Car" name="changecar" type="object"/>
+                </header>  
                 
             <sheet>
+                    <field name="image" widget="image" class="oe_avatar"/>
                 <group>
-                 
+                   <group>
                   
-                    
                     <field name="CarModel" />
                     <field name="Manufacturer" />
+                     </group>
+                     <group>
                     <field name="NumPlace" />
                     <field name="FuelType" />
                     <field name="EmployeeName"/>
                 
                 </group>
+                </group>
             </sheet>
+            <div class="oe_chatter">
+                <field name="message_follower_ids" widget="mail_followers"/>
+                <field name="activity_ids" widget="mail_activity"/>
+                <field name="message_ids" widget="mail_thread"/>
+            </div>
         </form>
     </field>
 </record>
@@ -123,6 +145,9 @@
     <field name="model">car.travel</field>
     <field name="arch" type="xml">
         <form string="">
+         <header>
+         <field name="State" widget="statusbar"/>
+          </header>
             <sheet>
                 <group>
                     <field name="car" />

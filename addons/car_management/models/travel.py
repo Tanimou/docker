@@ -14,3 +14,4 @@ class CarTravel(models.Model):
     #get NumPlace from car
     NumPlace=fields.Integer(related='car.NumPlace')
     Info=fields.Text('Info',required=True)
+    State=fields.Selection([('booked','Booked'),('in_progress','In Progress'),('done','Done'),('cancelled','Cancelled')],default='booked',string='Status')
