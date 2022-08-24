@@ -97,7 +97,7 @@
     <field name="model">car.car</field>
     <field name="arch" type="xml">
         <form string="">
-                  <button string="Details Driver" name="%(hr.open_view_employee_list_my)d" type="action"/>
+                  <button string="Details Driver" name="detailchauffeuraction" type="object"/>
                  <button string="Change Driver" name="%(changedriver_action)d" type="action" class="oe_highlight"/>
                   
                 

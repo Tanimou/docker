@@ -13,7 +13,14 @@ class Carcar(models.Model):
     EmployeeName=fields.Many2one('hr.employee','Driver',required=True)
 
     def detailchauffeuraction(self):
-        print("hello")
+       
+        return{
+            'name':'Driver Details',
+            'type':'ir.actions.act_window',
+            'view_mode':'form',
+            'res_model':'hr.employee',
+            'res_id':self.EmployeeName.id,
+          
+        }
         
-    def changedriver(self):
-        print("hello")
+   
