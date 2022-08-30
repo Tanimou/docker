@@ -26,7 +26,7 @@
                 <field name="StartDate" />
                 <field name="EndDate" />
                 <field name="NumPlace" />
-                <field name="Info" /> 
+                <field name="State" /> 
             </tree>
         </field>
     </record>
@@ -112,7 +112,7 @@
         <header>
                   <button string="Details Driver" name="detailchauffeuraction" type="object"/>
                  <button string="Change Driver" name="%(changedriver_action)d" type="action"/>
-                    <button string="Change Car" name="changecar" type="object"/>
+               <button string="View Car Location" name="car_location" type="object"/>
                 </header>  
                 
             <sheet>
@@ -146,11 +146,17 @@
     <field name="arch" type="xml">
         <form string="">
          <header>
+         <button string=" Mark as booked" name="action_book" type="object" class="oe_highlight"/>
+         <button string=" Travel in Progress" name="action_progress" type="object" class="oe_highlight"/>
+         <button string=" Terminate Travel" name="action_terminate" type="object" class="oe_highlight"/>
+         <button string=" Cancel Travel" name="action_cancel" type="object" class="oe_highlight"/>
          <field name="State" widget="statusbar"/>
           </header>
             <sheet>
                 <group>
                     <field name="car" />
+                       
+                 <button string="Change Car Properties" name="%(changecar_action)d" type="action"/>
                     <field name="StartPoint" />
                     <field name="DestinationPoint" />
                     <field name="StartDate" />

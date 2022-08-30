@@ -15,3 +15,19 @@ class CarTravel(models.Model):
     NumPlace=fields.Integer(related='car.NumPlace')
     Info=fields.Text('Info',required=True)
     State=fields.Selection([('booked','Booked'),('in_progress','In Progress'),('done','Done'),('cancelled','Cancelled')],default='booked',string='Status')
+    
+    def action_book(self):
+        self.State='booked'
+        return True
+    def action_progress(self):
+        self.State='in_progress'
+        return True
+    
+    def action_terminate(self):
+        self.State='done'
+        return True
+    
+    def action_cancel(self):
+        self.State='cancelled'
+        return True
+    
