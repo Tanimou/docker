@@ -29,5 +29,6 @@ class Carcar(models.Model):
         
     def car_location(self):
         return{'type': 'ir.actions.act_url',
-               'url':'https://tanimou.github.io/carmapview/',
+               #'url':'https://tanimou.github.io/carmapview/'
+               'url':'localhost:8069/car_map',
                'target':'self'}
