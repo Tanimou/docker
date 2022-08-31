@@ -26,6 +26,7 @@
         name="Ticket Details"
         parent="car_menu"
         sequence="10"/>
+        
 <record id="ViewCarMenu_action" model="ir.actions.act_window">
     <field name="name">ViewCar</field>
     <field name="res_model">car.car</field>

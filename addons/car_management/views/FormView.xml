@@ -26,7 +26,7 @@
                 <field name="StartDate" />
                 <field name="EndDate" />
                 <field name="NumPlace" />
-                <field name="State" /> 
+                <field name="State" />
             </tree>
         </field>
     </record>
@@ -36,163 +36,179 @@
         <field name="model">car.ticket</field>
         <field name="arch" type="xml">
             <tree string="">
-            <field name="ClientName" />
-            <field name="Info" />
-                    <field name="Date" />
-                    <field name="Price" />
-                    <field name="Car" />
-                    <field name="DestinationPoint" />
-                    <field name="StartTime" />
+                <field name="ClientName" />
+                <field name="Info" />
+                <field name="Date" />
+                <field name="Price" />
+                <field name="Car" />
+                <field name="DestinationPoint" />
+                <field name="StartTime" />
             </tree>
         </field>
     </record>
 
-        <record id="CarDetails_view_search" model="ir.ui.view">
+    <record id="CarDetails_view_search" model="ir.ui.view">
         <field name="name">CarDetails.view.search</field>
         <field name="model">car.car</field>
         <field name="arch" type="xml">
             <search string="">
-                   <field name="CarModel" filter_domain="['|',('CarModel','ilike',self),('EmployeeName','ilike',self)]"/>
+                <field name="CarModel" filter_domain="['|',('CarModel','ilike',self),('EmployeeName','ilike',self)]" />
                 <field name="Manufacturer" />
                 <field name="NumPlace" />
                 <field name="FuelType" />
                 <field name="EmployeeName" />
-                <filter name="filter_Manufacturer" string="Manufacturer"  context="{'group_by': 'Manufacturer'}"/>
+                <filter name="filter_Manufacturer" string="Manufacturer" context="{'group_by': 'Manufacturer'}" />
                 <filter name="filter_Gasoline" string="Gasoline" domain="[('FuelType', '=', 'Gasoline')]" />
-                  <filter name="filter_Electric" string="Electric" domain="[('FuelType', '=', 'Electric')]" />
-                    <filter name="filter_Diesel" string="Diesel" domain="[('FuelType', '=', 'Diesel')]" />
-                      <filter name="filter_Hybrid" string="Hybrid" domain="[('FuelType', '=', 'Hybrid')]" />
-                   <filter name="filter_EmployeeName" string="Driver" context="{'group_by': 'EmployeeName'}" />
-                    <filter name="filter_FuelType" string="Fuel Type" context="{'group_by': 'FuelType'}" />
-                      <searchpanel>
-                      <field name="FuelType" string="Fuel Type" enable_counters="1" select="multi" />
-                   </searchpanel>
+                <filter name="filter_Electric" string="Electric" domain="[('FuelType', '=', 'Electric')]" />
+                <filter name="filter_Diesel" string="Diesel" domain="[('FuelType', '=', 'Diesel')]" />
+                <filter name="filter_Hybrid" string="Hybrid" domain="[('FuelType', '=', 'Hybrid')]" />
+                <filter name="filter_EmployeeName" string="Driver" context="{'group_by': 'EmployeeName'}" />
+                <filter name="filter_FuelType" string="Fuel Type" context="{'group_by': 'FuelType'}" />
+                <searchpanel>
+                    <field name="FuelType" string="Fuel Type" enable_counters="1" select="multi" />
+                </searchpanel>
             </search>
         </field>
     </record>
 
-           <record id="TravelDetails_view_search" model="ir.ui.view">
+    <record id="TravelDetails_view_search" model="ir.ui.view">
         <field name="name">TravelDetails.view.search</field>
         <field name="model">car.travel</field>
         <field name="arch" type="xml">
             <search string="">
-              <field name="CarModel" />
+                <field name="CarModel" />
                 <field name="StartPoint" />
                 <field name="DestinationPoint" />
                 <field name="StartDate" />
                 <field name="EndDate" />
                 <field name="NumPlace" />
-                      <searchpanel>
-                      <field name="car" string="Car" enable_counters="1" />
-                        </searchpanel>
+                <searchpanel>
+                    <field name="car" string="Car" enable_counters="1" />
+                </searchpanel>
             </search>
         </field>
     </record>
 
-               <record id="TicketDetails_view_search" model="ir.ui.view">
+    <record id="TicketDetails_view_search" model="ir.ui.view">
         <field name="name">TicketDetails.view.search</field>
         <field name="model">car.ticket</field>
         <field name="arch" type="xml">
             <search string="">
-       <field name="ClientName" />
-                    <field name="Date" />
-                    <field name="Price" />
-                    <field name="Car" />
-                    <field name="DestinationPoint" />
-                    <field name="StartTime" />
+                <field name="ClientName" />
+                <field name="Date" />
+                <field name="Price" />
+                <field name="Car" />
+                <field name="DestinationPoint" />
+                <field name="StartTime" />
             </search>
         </field>
     </record>
 
-<record id="cardetails_view_form" model="ir.ui.view">
-    <field name="name">car_details.view.form</field>
-    <field name="model">car.car</field>
-    <field name="arch" type="xml">
-        <form string="">
-        <header>
-                  <button string="Details Driver" name="detailchauffeuraction" type="object"/>
-                 <button string="Change Driver" name="%(changedriver_action)d" type="action"/>
-               <button string="View Car Location" name="car_location" type="object"/>
-                </header>  
-                
-            <sheet>
-                    <field name="image" widget="image" class="oe_avatar"/>
-                <group>
-                   <group>
-                  
-                    <field name="CarModel" />
-                    <field name="Manufacturer" />
-                     </group>
-                     <group>
-                    <field name="NumPlace" />
-                    <field name="FuelType" />
-                    <field name="EmployeeName"/>
-                
-                </group>
-                </group>
-            </sheet>
-            <div class="oe_chatter">
-                <field name="message_follower_ids" widget="mail_followers"/>
-                <field name="activity_ids" widget="mail_activity"/>
-                <field name="message_ids" widget="mail_thread"/>
-            </div>
-        </form>
-    </field>
-</record>
+    <record id="cardetails_view_form" model="ir.ui.view">
+        <field name="name">car_details.view.form</field>
+        <field name="model">car.car</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <header>
+                    <button string="Details Driver" name="detailchauffeuraction" type="object" />
+                    <button string="Change Driver" name="%(changedriver_action)d" type="action" />
+                    <button string="View Car Location" name="car_location" type="object" />
+                </header>
 
-<record id="traveldetails_view_form" model="ir.ui.view">
-    <field name="name">travel_details.view.form</field>
-    <field name="model">car.travel</field>
-    <field name="arch" type="xml">
-        <form string="">
-         <header>
-         <button string=" Mark as booked" name="action_book" type="object" class="oe_highlight"/>
-         <button string=" Travel in Progress" name="action_progress" type="object" class="oe_highlight"/>
-         <button string=" Terminate Travel" name="action_terminate" type="object" class="oe_highlight"/>
-         <button string=" Cancel Travel" name="action_cancel" type="object" class="oe_highlight"/>
-         <field name="State" widget="statusbar"/>
-          </header>
-            <sheet>
-                <group>
-                    <field name="car" />
-                       
-                 <button string="Change Car Properties" name="%(changecar_action)d" type="action"/>
-                    <field name="StartPoint" />
-                    <field name="DestinationPoint" />
-                    <field name="StartDate" />
-                    <field name="EndDate" />
-                    <field name="Duration" />
-                    <field name="NumPlace" /> 
-                    <field name="Info" /> 
-                    
-                </group>
-            </sheet>
+                <sheet>
+                    <field name="image" widget="image" class="oe_avatar" />
+                    <group>
+                        <group>
 
+                            <field name="CarModel" />
+                            <field name="Manufacturer" />
+                        </group>
+                        <group>
+                            <field name="NumPlace" />
+                            <field name="FuelType" />
+                            <field name="EmployeeName" />
 
-        </form>
-    </field>
-</record>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="geolocation" string="Geolocation">
 
-<record id="ticketdetails_view_form" model="ir.ui.view">
-    <field name="name">ticket_details.view.form</field>
-    <field name="model">car.ticket</field>
-    <field name="arch" type="xml">
-        <form string="">
-            <sheet>
-                <group>
-                    <field name="ClientName" />
-                    <field name="Info" />
-                    <field name="Date" />
-                    <field name="Price" />
-                    <field name="Car" />
-                    <field name="DestinationPoint" />
-                    <field name="StartTime" />
-                </group>
-            </sheet>
+                            <xpath expr="." position="inside">
+                                <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+                                    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+                                    crossorigin="" />
+                                <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+                                    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+                                    crossorigin=""></script>
+                                <div id="map" style="height:500px"></div>
 
+                                <script src="/car_management/static/src/js/main.js"></script>
 
-        </form>
-    </field>
-</record>
+                            </xpath>
+
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="traveldetails_view_form" model="ir.ui.view">
+        <field name="name">travel_details.view.form</field>
+        <field name="model">car.travel</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <header>
+                    <button string=" Mark as booked" name="action_book" type="object" class="oe_highlight" />
+                    <button string=" Travel in Progress" name="action_progress" type="object" class="oe_highlight" />
+                    <button string=" Terminate Travel" name="action_terminate" type="object" class="oe_highlight" />
+                    <button string=" Cancel Travel" name="action_cancel" type="object" class="oe_highlight" />
+                    <field name="State" widget="statusbar" />
+                </header>
+                <sheet>
+                    <group>
+                        <field name="car" />
+
+                        <button string="Change Car Properties" name="%(changecar_action)d" type="action" />
+                        <field name="StartPoint" />
+                        <field name="DestinationPoint" />
+                        <field name="StartDate" />
+                        <field name="EndDate" />
+                        <field name="Duration" />
+                        <field name="NumPlace" />
+                        <field name="Info" />
+
+                    </group>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="ticketdetails_view_form" model="ir.ui.view">
+        <field name="name">ticket_details.view.form</field>
+        <field name="model">car.ticket</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="ClientName" />
+                        <field name="Info" />
+                        <field name="Date" />
+                        <field name="Price" />
+                        <field name="Car" />
+                        <field name="DestinationPoint" />
+                        <field name="StartTime" />
+                    </group>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
 
 </odoo>
