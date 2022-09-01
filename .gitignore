@@ -1,6 +1,10 @@
 .idea
 /addons/car_management/models/__pycache__
+/addons/car_management/__pycache__
+/addons/car_management/controllers/__pycache__
 /addons/web_responsive/__pycache__
 /addons/car_management/wizard/__pycache__
 /base_addons
 /node_modules
+/addons/jazzy_backend_theme/__pycache__
+/addons/jazzy_backend_theme/models/__pycache__

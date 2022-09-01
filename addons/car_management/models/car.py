@@ -14,7 +14,8 @@ class Carcar(models.Model):
     #create a relation between car and driver
     EmployeeName=fields.Many2one('hr.employee','Driver',required=False)
     image=fields.Image(string="Image",required=True)
-
+    Lat=fields.Float(string='Latitude',required=True)
+    Long=fields.Float(string='Longitude',required=True)
     def detailchauffeuraction(self):
        
         return{

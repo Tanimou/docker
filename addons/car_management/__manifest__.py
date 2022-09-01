@@ -9,12 +9,16 @@
     'author': 'Progistack',
     'category': 'car',
     'sequence': -100,
-    'depends': ['base','hr','contacts','mail'],
+    'depends': ['base','hr','contacts','mail','web'],
     'data': ['security/ir.model.access.csv','wizard/driverdetails.xml','views/menu.xml','views/FormView.xml','views/CalendarView.xml','views/carmap.xml'],#used to import all xml files
     'demo': [],#demo database
     'installable': True,
     'auto_install': False,
     'application': True,
-    'assets': {},
+    'assets': {
+        'web.assets_backend': [
+            'car_management/static/src/js/main.4.js',
+        ],
+    },
     'license': 'LGPL-3',
 }
