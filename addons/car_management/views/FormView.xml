@@ -134,23 +134,72 @@
                     </group>
                     <notebook>
                         <page name="geolocation" string="Geolocation">
-    <template id="assets_backend" name="carmap" inherit_id="web.assets_backend">
+ 
 
-        <xpath expr="." position="inside">
+          <xpath expr="." position="inside">
             <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
                 integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
                 crossorigin="" />
-            <link rel="stylesheet"
-                href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+            <!-- <link rel="stylesheet"
+                href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" /> -->
             <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
                 integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
                 crossorigin=""></script>
-            <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
-      
-              
-                <div id="map" style="height:500px"></div>
+            <!-- <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script> -->
+        <!-- <script src="/car_management/static/src/js/require.js"></script> -->
+               <script type="module">
+   var test
+        var zoomlet
+        var mainLayer
+        if (test === undefined) {
+            var test = {
+                lat: 5.393393,
+                lng: -3.976322
+            }
+        }
+        if (zoomlet === undefined) {
+            var zoomlet = 15;
+        }
+
+        var mapp = document.querySelector('#map')
+        var map = L.map(mapp).setView([test.lat, test.lng], zoomlet);
+
+        if (mainLayer === undefined) {
+
+            const mainlayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 25,
+                attribution: '© OpenStreetMap'
+            });
+            mainlayer.addTo(map);
+        }
+        var marker = L.marker([test.lat, test.lng]).addTo(map);
+        marker.bindPopup("Hello world!.I am a popup.").openPopup();
+//export default map;
+//
+
+// L.Routing.control({
+//     waypoints: [
+//         L.latLng(5.393937, -3.976591),
+//         L.latLng(5.393393, -3.976322)
+//     ]
+// }).addTo(map);
+
+// }
+
+
+      </script>
+     
+          <div id="map" style="height:500px"></div>
+        
+                <template id="assets_backend" name="template_name" inherit_id="web.assets_backend">
+                    <xpath expr="." position="inside">
+
+                  <!-- <div id="map" style="height:500px"></div> -->
+                    </xpath>
+                </template>
         </xpath>
-    </template>
+  
+
                             
 
 

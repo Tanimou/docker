@@ -18,7 +18,7 @@
             <!-- </t>
         </template>
     </data> -->
-<template id="assets_backend" name="carmap">
+<template id="car_map" name="carmap">
 <t t-call="website.layout">
     <xpath expr="." position="inside">
                         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
