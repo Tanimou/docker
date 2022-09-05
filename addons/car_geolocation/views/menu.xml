@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_delivery_vehicle" model="ir.actions.act_window">
+        <field name="name">Livraison</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">stock.picking</field>
+        <field name="view_mode">calendar,tree,form</field>
+        <field name="context">{'search_default_in_progress': 1, 'search_default_available': 1}</field>
+    </record>
+
+    <menuitem id="menu_delivery_inherit"
+              name="Livraisons"
+              parent="fleet.menu_root"
+              action="action_delivery_vehicle"
+              sequence="10"
+    />
+</odoo>

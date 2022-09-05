@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- vue kanban -->
+    <record id="inherited_fleet_vehicle_kanban_view" model="ir.ui.view">
+        <field name="name">inherited.fleet.vehicle.kanban</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='state_id']" position="after">
+                <field name="vehicle_type_id"/>
+            </xpath>
+            <xpath expr="//kanban" position="attributes">
+                <attribute name="default_group_by">vehicle_type_id</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- vue formulaire -->
+    <record id="inherit_fleet_vehicle_view_form" model="ir.ui.view">
+        <field name="name">inherit.fleet.vehicle.form</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="hr_fleet.fleet_vehicle_view_form_inherit_hr"/>
+        <field name="arch" type="xml">
+            <button name="action_open_employee" position="before">
+                <button name="action_open_map" type="object" class="oe_stat_button" icon="fa-map-marker">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_text">Google Map</span>
+                    </div>
+                </button>
+                <button name="action_return_delivery"
+                        class="oe_stat_button"
+                        icon="fa-truck"
+                        type="object"
+                >
+                    <div class="o_form_field o_stat_info">
+                        <field string="Livraison(s)" name="delivery_count" widget="statinfo"/>
+                    </div>
+                </button>
+            </button>
+        </field>
+    </record>
+
+    <record id="view_inherit_fleet_vehicle_view_form" model="ir.ui.view">
+        <field name="name">view.inherit.fleet.vehicle</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='driver_id']" position="after">
+                <field name="delivery_ids" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='acquisition_date']" position="before">
+                <field name="delivery_end" invisible="1"/>
+                <field name="vehicle_type_id"/>
+            </xpath>
+            <xpath expr="//sheet//notebook//field[@name='color']" position="attributes">
+                <attribute name="widget">color</attribute>
+            </xpath>
+            <xpath expr="//sheet//notebook" position="inside">
+                <page string="Géolocalisation">
+                    <group>
+                        <group string="Position">
+                            <label for="date_localization" string="Géolocalisation"/>
+                            <div>
+                                <span>Latitude :</span>
+                                <field name="latitude" nolabel="1" class="oe_inline"/>
+                                <br/>
+                                <span>Longitude :</span>
+                                <field name="longitude" nolabel="1" class="oe_inline"/>
+                                <br/>
+                                <span>Mise à jour le :</span>
+                                <field name="date_localization" nolabel="1" class="oe_inline" readonly="1"/>
+                            </div>
+                        </group>
+                        <group string="Marqueur">
+                            <label for="marker_color" string="Marqueur"/>
+                            <div>
+                                <field name="marker_color" widget="google_marker_picker"/>
+                            </div>
+                        </group>
+                    </group>
+                </page>
+
+
+
+                                     <!-- Introducing leaflet mapview through javascript-->
+                    <page name="geolocation2" string="Geolocation">
+          <xpath expr="." position="inside">
+            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+                integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+                crossorigin="" />
+            <!-- <link rel="stylesheet"
+                href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" /> -->
+            <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+                integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+                crossorigin=""></script>
+            <!-- <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script> -->
+        <!-- <script src="/car_management/static/src/js/require.js"></script> -->
+           <div id="map" style="height:500px"></div>                
+               <script type="module">
+   var test
+        var zoomlet
+        var mainLayer
+        if (test === undefined) {
+            var test = {
+                lat: 5.393393,
+                lng: -3.976322
+            }
+        }
+        if (zoomlet === undefined) {
+            var zoomlet = 15;
+        }
+
+        var mapp = document.querySelector('#map')
+        var map = L.map(mapp).setView([test.lat, test.lng], zoomlet);
+
+        if (mainLayer === undefined) {
+
+            const mainlayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 25,
+                attribution: '© OpenStreetMap'
+            });
+            mainlayer.addTo(map);
+        }
+        var marker = L.marker([test.lat, test.lng]).addTo(map);
+        marker.bindPopup("Hello world!.I am a popup.").openPopup();
+      </script>
+     
+       
+           
+        </xpath>
+                        </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- vue calendrier -->
+    <record id="view_fleet_vehicle_calender" model="ir.ui.view">
+        <field name="name">view.fleet.vehicle.calendar</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="arch" type="xml">
+            <calendar date_start="create_date" color="driver_id" mode="month" quick_add="False" delete="0" create="0">
+                <field name="name" filters="1"/>
+                <field name="driver_id" filters="1" avatar_field="avatar_128"/>
+                <field name="delivery_ids"/>
+            </calendar>
+        </field>
+    </record>
+
+    <!-- vue google map -->
+    <!-- <record id="view_fleet_vehicle_google_map" model="ir.ui.view">
+        <field name="name">view.fleet.vehicle.google_map</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="arch" type="xml">
+            <google_map class="o_res_partner_map" string="Google Map" lat="latitude" lng="longitude"
+                        color="marker_color"
+                        sidebar_title="model_id"
+                        sidebar_subtitle="license_plate"
+            >
+                <field name="id"/>
+                <field name="latitude"/>
+                <field name="longitude"/>
+                <field name="marker_color"/>
+                <field name="odometer"/>
+                <field name="image_128"/>
+                <field name="model_id"/>
+                <field name="delivery_end"/>
+                <field name="license_plate"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="o_kanban_record_has_image_fill o_res_partner_kanban">
+                            <div class="o_kanban_image_fill_left o_kanban_image_full"
+                                 t-attf-style="background-image: url(#{kanban_image('fleet.vehicle', 'image_128', record.id.raw_value, placeholder)})"
+                                 role="img"/>
+                            <div class="oe_kanban_details">
+                                <ul>
+                                    <li>
+                                        <b>Modèle : </b>
+                                        <field name="model_id"/>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <b>Immatriculation : </b>
+                                        <field name="license_plate"/>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <b>Chauffeur : </b>
+                                        <field name="driver_id"/>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <b>Kilométrage : </b>
+                                        <field name="odometer"/>
+                                        <span>Km</span>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <b>Livraison en cours : </b>
+                                        <field name="delivery_end"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </google_map>
+        </field>
+    </record> -->
+
+    <record id="fleet.fleet_vehicle_action" model="ir.actions.act_window">
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+</odoo>

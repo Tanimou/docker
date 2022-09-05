@@ -1,0 +1,25 @@
+<odoo>
+    <data>
+        <record id="inherit_view_res_partner_form" model="ir.ui.view">
+            <field name="name">view.res.partner.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <button name="action_open_employees" position="after">
+                    <button name="action_return_delivery"
+                            class="oe_stat_button"
+                            icon="fa-truck"
+                            type="object"
+                    >
+                        <div class="o_form_field o_stat_info">
+                            <field string="Livraison(s)" name="delivery_count" widget="statinfo"/>
+                        </div>
+                    </button>
+                </button>
+                <xpath expr="//field[@name='vat']" position="before">
+                    <field name="delivery_ids" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

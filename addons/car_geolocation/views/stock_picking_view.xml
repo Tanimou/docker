@@ -1,0 +1,81 @@
+<odoo>
+    <data>
+        <!-- vue formulaire -->
+        <record id="inherit_view_stock_picking_form" model="ir.ui.view">
+            <field name="name">view.stock.picking.form.inherit</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <button name="action_picking_move_tree" position="before">
+                    <button name="action_open_map_route" type="object" class="oe_stat_button" icon="fa-road"
+                            attrs="{'invisible': [('picking_type_code', '!=', 'outgoing')]}"
+                    >
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_text">Route</span>
+                        </div>
+                    </button>
+                </button>
+                <xpath expr="//button[@name='button_validate'][1]" position="attributes">
+                    <button name="button_validate"
+                            attrs="{'invisible': ['|', ('state', 'in', ('waiting','confirmed', 'assigned')), ('show_validate', '=', False)]}"
+                            string="Validate" type="object" class="oe_highlight" groups="stock.group_stock_user"
+                            data-hotkey="v"/>
+                </xpath>
+                <xpath expr="//button[@name='button_validate'][2]" position="attributes">
+                    <button name="button_validate"
+                            attrs="{'invisible': ['|', ('state', 'not in', ('waiting', 'confirmed', 'assigned' )), ('show_validate', '=', False)]}"
+                            string="Validate" type="object" groups="stock.group_stock_user" class="o_btn_validate"
+                            data-hotkey="v"/>
+                </xpath>
+                <xpath expr="//button[@name='button_validate']" position="before">
+                    <button string="Donner au chauffeur" type="object" name="action_in_progress"
+                            class="oe_stat_button"
+                            attrs="{'invisible': ['|', ('state', 'in', ('waiting', 'confirmed', 'in_progress', 'done')), ('picking_type_code', '!=', 'outgoing')]}"
+                    />
+                </xpath>
+                <xpath expr="//field[@name='state']" position="replace">
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,confirmed,assigned,in_progress,done"/>
+                </xpath>
+                <xpath expr="//div[@class='o_td_label']" position="before">
+                    <field name="vehicle_id" attrs="{'invisible': [('picking_type_code', '!=', 'outgoing')]}"/>
+                </xpath>
+                <xpath expr="//label[@for='scheduled_date']" position="before">
+                    <field name="driver_id" attrs="{'invisible': [('picking_type_code', '!=', 'outgoing')]}"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <!-- vue recherche -->
+        <record id="picking_internal_search_inherit" model="ir.ui.view">
+            <field name="name">inherit.stock.picking.search</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='done']" position="before">
+                    <filter string="En cours" name="in_progress" domain="[('state','=', 'in_progress')]"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- vue calendrier -->
+        <record id="inherit_view_stock_picking_calendar" model="ir.ui.view">
+            <field name="name">view.stock.picking.calendar.inherit</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.stock_picking_calendar"/>
+            <field name="arch" type="xml">
+                <xpath expr="//calendar" position="attributes">
+                    <attribute name="mode">month</attribute>
+                    <attribute name="delete">0</attribute>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="before">
+                    <field name="name" filters="1"/>
+                    <field name="vehicle_id" filters="1"/>
+                    <field name="driver_id" filters="1"/>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="replace"></xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

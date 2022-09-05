@@ -1,0 +1,30 @@
+.color-yellow{
+color: #f7df54;
+}
+
+.color-text{
+color: #004589;
+}
+
+.bg-yellow{
+background-color: #f7df54;
+}
+
+.page{
+background: url("account_invoice_management/static/src/img/bg.PNG") no-repeat center center;
+background-position: cover;
+}
+
+.border-table{
+border: 1px solid black;
+}
+
+table{
+width: 100%;
+margin-bottom: 10px;
+}
+
+tr, th, td {
+padding: 5px;
+}
+
