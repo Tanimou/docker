@@ -147,8 +147,10 @@
                 crossorigin=""></script>
             <!-- <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script> -->
         <!-- <script src="/car_management/static/src/js/require.js"></script> -->
+        <div id="map" style="height:500px"></div>
                <script type="module">
-   var test
+  
+ var test
         var zoomlet
         var mainLayer
         if (test === undefined) {
@@ -172,8 +174,23 @@
             });
             mainlayer.addTo(map);
         }
-        var marker = L.marker([test.lat, test.lng]).addTo(map);
-        marker.bindPopup("Hello world!.I am a popup.").openPopup();
+       // var result = localStorage.getItem("result");
+        //console.log(result)
+     //   var resulte=JSON.parse(result)
+        //var marker = L.marker([test.lat, test.lng]).addTo(map);
+      //  marker.bindPopup("Hello world!.I am a popup.").openPopup();
+      var value
+        for (let key in result) {
+                if (result.hasOwnProperty(key))
+                {
+                    value = result[key];
+                    console.log(key, value);
+var marker = L.marker([result[key]["Lat"], result[key]["Long"]]).addTo(map);
+                        marker.bindPopup(result[key]["CarModel"]).openPopup();
+                }}
+          
+        //  var marker3 = L.marker([result["1"]["Lat"], result["1"]["Long"]]).addTo(map);
+             //           marker3.bindPopup(result["1"]["CarModel"]).openPopup();
 //export default map;
 //
 
@@ -186,10 +203,9 @@
 
 // }
 
-
       </script>
      
-          <div id="map" style="height:500px"></div>
+          
         
                 <template id="assets_backend" name="template_name" inherit_id="web.assets_backend">
                     <xpath expr="." position="inside">

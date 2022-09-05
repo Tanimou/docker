@@ -8,3 +8,4 @@
 /node_modules
 /addons/jazzy_backend_theme/__pycache__
 /addons/jazzy_backend_theme/models/__pycache__
+/addons/car_geolocation
