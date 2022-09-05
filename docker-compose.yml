@@ -8,6 +8,8 @@ services:
       - "8069:8069"
     volumes:
       - ./addons:/mnt/extra-addons
+  
+      - ./odoo-db-data:/var/lib/odo
     restart: always
   db:
     image: postgres:latest
