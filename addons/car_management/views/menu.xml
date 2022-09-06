@@ -4,7 +4,7 @@
 <menuitem
         id="car_menu"
         name="Car"
-        web_icon="car_management,static/description/icon.png"
+        web_icon="car_management,web/static/description/icon.png"
         sequence="10"/>
 
 <menuitem

@@ -16,7 +16,10 @@
     'auto_install': False,
     'application': True,
     'assets': {
-    'web.assets_backend': ['car_management/static/src/js/main.18.js'],
+    'web.assets_backend': ['car_management/web/static/src/js/main.18.js'],
+  #  'web.assets_frontend': ['car_management/static/src/js/main.62.js'],
+
+    
     },
     'license': 'LGPL-3',
 }

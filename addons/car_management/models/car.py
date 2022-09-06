@@ -13,7 +13,7 @@ class Carcar(models.Model):
     FuelType=fields.Selection([('Diesel','Diesel'),('Gasoline','Gasoline'),('Hybrid','Hybrid'),('Electric','Electric')],string='FuelType',required=True)
     #create a relation between car and driver
     EmployeeName=fields.Many2one('hr.employee','Driver',required=False)
-    image=fields.Image(string="Image",required=True)
+    image=fields.Image(string="Image")
     Lat=fields.Float(string='Latitude',required=True)
     Long=fields.Float(string='Longitude',required=True)
     def detailchauffeuraction(self):
