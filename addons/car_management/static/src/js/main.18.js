@@ -41,7 +41,7 @@ odoo.define(
                         context: self.context,
                     }).then(function (result) {
                         this.result = result
-                        //   console.log(result)
+                           //console.log(result)
 
                         // localStorage.resultat=JSON.stringify(result["0"])
                         __exports.returneresult = function () {
