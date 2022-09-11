@@ -1,3 +1,5 @@
+/** @odoo-module **/
+
 var test
 var zoomlet
 var mainLayer
@@ -24,8 +26,8 @@ if (mainLayer === undefined) {
 }
 var value
 function parseURLParams(url) {
-    var queryStart = url.indexOf("?") + 1,
-        queryEnd = url.indexOf("#") + 1 || url.length + 1,
+    var queryStart = url.indexOf("#") + 1,
+        queryEnd =  url.length + 1,
         query = url.slice(queryStart, queryEnd - 1),
         pairs = query.replace(/\+/g, " ").split("&"),
         parms = {}, i, n, v, nv;
@@ -42,11 +44,12 @@ function parseURLParams(url) {
 
 var url = window.location.href;
 
-var page_url = url.replace("#", "?")
+//var page_url = url.replace("#", "?")
 //var page_url2 = page_url.replace("&", "é")
-var params = parseURLParams(page_url);
+var params = parseURLParams(url);
 
 console.log(params)
+
 for (let key in result) {
     if (result.hasOwnProperty(key)) {
         value = result[key];

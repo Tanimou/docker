@@ -1,5 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_position_vehicle,position.vehicle,model_position_vehicle,,1,1,1,1
 access_vehicle_type,vehicle.type,model_vehicle_type,,1,1,1,1
-
+"car_geolocation.access_stock_picking","access_stock_picking","car_geolocation.model_stock_picking","base.group_user","1","1","1","1"
 

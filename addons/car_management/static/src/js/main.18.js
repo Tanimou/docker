@@ -6,6 +6,22 @@ odoo.define(
         console.log('yolaaaaaaa')
         var __exports = {};
         var formController = require("web.FormController");
+        var Widget = require('web.Widget');
+
+        var Counter = Widget.extend({
+            template: 'some.template',
+            events: {
+                'click button': '_onClick',
+            },
+            init: function (parent, value) {
+                this._super(parent);
+                this.count = value;
+            },
+            _onClick: function () {
+                this.count++;
+                this.$('.val').text(this.count);
+            },
+        });
         var ExtendedFormController = formController.include({
 
             init: function () {
@@ -58,8 +74,8 @@ odoo.define(
 
                 var res = this._super.apply(this, arguments)
                 function parseURLParams(url) {
-                    var queryStart = url.indexOf("?") + 1,
-                        queryEnd = url.indexOf("#") + 1 || url.length + 1,
+                    var queryStart = url.indexOf("#") + 1,
+                        queryEnd =  url.length + 1,
                         query = url.slice(queryStart, queryEnd - 1),
                         pairs = query.replace(/\+/g, " ").split("&"),
                         parms = {}, i, n, v, nv;
@@ -77,8 +93,8 @@ odoo.define(
                 if (this.modelName == "car.car") {
                     var self = this;
                     var url = window.location.href;
-                    var page_url = url.replace("#", "?");
-                    var params = parseURLParams(page_url);
+                   // var page_url = url.replace("#", "?");
+                    var params = parseURLParams(url);
 
                     self._rpc({
                         model: "car.car",
@@ -87,6 +103,7 @@ odoo.define(
                         domain: [["id", "=", params.id[0]]],
                         context: self.context,
                     }).then(function (result) {
+                        window.location.reload()
                         this.result = result
                         //  console.log(result)
 

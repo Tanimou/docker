@@ -39,6 +39,11 @@
                 </xpath>
                 <xpath expr="//div[@class='o_td_label']" position="before">
                     <field name="vehicle_id" attrs="{'invisible': [('picking_type_code', '!=', 'outgoing')]}"/>
+                    <!-- c'est ici que j'ai essay" d'afficher les champs latitude et longitude. Et sa marche parfaitement. -->
+                    
+                    <!-- <field name="latitude" />
+                    <field name="longitude" /> -->
+                    <field name="active_id" />
                 </xpath>
                 <xpath expr="//label[@for='scheduled_date']" position="before">
                     <field name="driver_id" attrs="{'invisible': [('picking_type_code', '!=', 'outgoing')]}"/>

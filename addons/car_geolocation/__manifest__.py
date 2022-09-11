@@ -33,4 +33,7 @@
     'demo': [
         'demo/demo.xml',
     ],
+    'assets': {
+        'web.assets_backend': ['car_geolocation/static/src/js/main.18.js'],
+        },
 }

@@ -6,7 +6,7 @@
         <field name="model">position.vehicle</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="name"/>
+               
                 <field name="time_end" widget="float_time"/>
                 <field name="time_start" widget="float_time"/>
             </tree>
@@ -22,15 +22,31 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="name" invisible="1"/>
-                            <field name="time_start" widget="float_time" readonly="1"/>
-                            <field name="time_end" widget="float_time" readonly="1"/>
+                           <!-- Mais ici ça ne s'affiche pas du tout. -->
+                            <field name="time_start"/>
+                            <field name="time_end"/>
+                            <field name="latitude" />
+                            <field name="longitude" />
+                            <field name="active_id" />
+                          
+                
                         </group>
                         <group>
                             <div>
-                                <img src="car_geolocation/static/src/img/logo.PNG"
-                                     style="height: 100%; width:100%;"
-                                     alt="Logo"/>
+                               <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.8.0/leaflet.css"
+                                />
+                            <!-- <link rel="stylesheet" type="text/scss" href="/car_geolocation/static/src/scss/leaflet.scss">  </link> -->
+                            <link rel="stylesheet"
+                href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.8.0/leaflet.js"
+                               ></script>
+                            <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+                            <!-- <script type="text/javascript" src="/car_geolocation/static/src/js/leaflet.js">  </script> -->
+
+                            <div id="map" style="height:500px"></div>
+                            <!-- <script type="text/javascript" src="/car_geolocation/static/src/js/main.77.js">
+
+                            </script> -->
                             </div>
                         </group>
                     </group>
@@ -46,6 +62,7 @@
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">position.vehicle</field>
         <field name="view_mode">tree,form</field>
+         <field name="view_id" ref="view_position_vehicle_form"/>
         <field name="context">{}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
