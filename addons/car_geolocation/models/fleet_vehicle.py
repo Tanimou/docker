@@ -9,8 +9,10 @@ class InheritFleetVehicle(models.Model):
 
     delivery_end = fields.Char(string='Livraison en cours', compute="_compute_delivery", default="Aucune")
     marker_color = fields.Char(string='Marqueur', default='red', required=True)
-    latitude = fields.Float(string='Latitude', digits=(10, 7))
-    longitude = fields.Float(string='Longitude', digits=(10, 7))
+    latitude = fields.Float(string='Latitude Initiale', digits=(10, 7))
+    longitude = fields.Float(string='Longitude Initiale', digits=(10, 7))
+    latitudeF = fields.Float(string='Latitude Finale', digits=(10, 7))
+    longitudeF = fields.Float(string='Longitude Finale', digits=(10, 7))
     vehicle_type_id = fields.Many2one('vehicle.type', 'Type de véhicule', tracking=True)
     delivery_ids = fields.One2many('stock.picking', 'vehicle_id', string="Livraisons")
     delivery_count = fields.Integer(compute="_compute_delivery", string='Compteur livraison', copy=False, default=0,

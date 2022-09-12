@@ -9,7 +9,11 @@ class InheritFleetVehicle(models.Model):
 
     vehicle_id = fields.Many2one('fleet.vehicle', 'Véhicule', tracking=True)
     driver_id = fields.Many2one(related='vehicle_id.driver_id', string='Conducteur', tracking=True, copy=False)
-    active_id = fields.Integer(compute="pick_active_id",string="Active id")
+   # active_id = fields.Integer(compute="pick_active_id",string="Active id")
+    latitude = fields.Float(related='vehicle_id.latitude', string='latitude initiale', tracking=True, copy=False)
+    longitude = fields.Float(related='vehicle_id.longitude', string='longitude initiale', tracking=True, copy=False)
+    latitudeF = fields.Float(related='vehicle_id.latitudeF', string='latitude finale', tracking=True, copy=False)
+    longitudeF = fields.Float(related='vehicle_id.longitudeF', string='longitude finale', tracking=True, copy=False)
     active_validate_button = fields.Boolean(default=False)
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -27,15 +31,15 @@ class InheritFleetVehicle(models.Model):
              " * Ready: The transfer is ready to be processed.\n(a) The shipping policy is \"As soon as possible\": at least one product has been reserved.\n(b) The shipping policy is \"When all products are ready\": all product have been reserved.\n"
              " * Done: The transfer has been processed.\n"
              " * Cancelled: The transfer has been cancelled.")
-    def pick_active_id(self):
-        params=self._context.get('params')
-        print(params)
-        if  'id' in params:
-            print("id:",params["id"],"menu_id:",params["menu_id"])
-            self.active_id=params["id"]
-            print(self.vehicle_id.name)
-        else:self.active_id=self._context.get('active_id')
-     #   if self.active_id in self.id:
+    # def pick_active_id(self):
+    #     params=self._context.get('params')
+    #  #   print(params)
+    #     if  'id' in params:
+    #       #  print("id:",params["id"],"menu_id:",params["menu_id"])
+    #         self.active_id=params["id"]
+    #       #  print(self.vehicle_id.name)
+    #     else:self.active_id=self._context.get('active_id')
+    #  #   if self.active_id in self.id:
        
     def action_in_progress(self):
         for rec in self:
@@ -53,7 +57,7 @@ class InheritFleetVehicle(models.Model):
                 "name": "Route", 
                 
                 'view_mode': 'form',
-               # 'context':{'default_vehicle_id':self.vehicle_id}
+               # 'context':{'id':self.active_id}
                 }
 
     def button_validate(self):

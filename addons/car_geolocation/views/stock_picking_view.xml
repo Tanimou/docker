@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
                 <button name="action_picking_move_tree" position="before">
                     <button name="action_open_map_route" type="object" class="oe_stat_button" icon="fa-road"
-                            attrs="{'invisible': [('picking_type_code', '!=', 'outgoing')]}"
+                            attrs="{'invisible': [('picking_type_code', '!=', 'outgoing')]}" 
                     >
                         <div class="o_field_widget o_stat_info">
                             <span class="o_stat_text">Route</span>
@@ -43,7 +43,7 @@
                     
                     <!-- <field name="latitude" />
                     <field name="longitude" /> -->
-                    <field name="active_id" />
+                    <!-- <field name="active_id" /> -->
                 </xpath>
                 <xpath expr="//label[@for='scheduled_date']" position="before">
                     <field name="driver_id" attrs="{'invisible': [('picking_type_code', '!=', 'outgoing')]}"/>

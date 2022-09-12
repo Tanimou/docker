@@ -62,12 +62,22 @@
                         <group string="Position">
                             <label for="date_localization" string="Géolocalisation"/>
                             <div>
-                                <span>Latitude :</span>
+                            <group name="coordI" string="string">
+                                  <span>Latitude initiale :</span>
                                 <field name="latitude" nolabel="1" class="oe_inline"/>
                                 <br/>
-                                <span>Longitude :</span>
+                                <span>Longitude initiale :</span>
                                 <field name="longitude" nolabel="1" class="oe_inline"/>
                                 <br/>
+                            </group>
+                              <group name="coordF" string="string">
+                                  <span>Latitude finale :</span>
+                                <field name="latitudeF" nolabel="1" class="oe_inline"/>
+                                <br/>
+                                <span>Longitude finale :</span>
+                                <field name="longitudeF" nolabel="1" class="oe_inline"/>
+                                <br/>
+                              </group>
                                 <span>Mise à jour le :</span>
                                 <field name="date_localization" nolabel="1" class="oe_inline" readonly="1"/>
                             </div>

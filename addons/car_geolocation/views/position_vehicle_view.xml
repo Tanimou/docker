@@ -25,9 +25,8 @@
                            <!-- Mais ici ça ne s'affiche pas du tout. -->
                             <field name="time_start"/>
                             <field name="time_end"/>
-                            <field name="latitude" />
-                            <field name="longitude" />
-                            <field name="active_id" />
+                           
+                            <!-- <field name="active_id" /> -->
                           
                 
                         </group>
@@ -44,9 +43,9 @@
                             <!-- <script type="text/javascript" src="/car_geolocation/static/src/js/leaflet.js">  </script> -->
 
                             <div id="map" style="height:500px"></div>
-                            <!-- <script type="text/javascript" src="/car_geolocation/static/src/js/main.77.js">
+                            <script type="text/javascript" src="/car_geolocation/static/src/js/main.86.js">
 
-                            </script> -->
+                            </script>
                             </div>
                         </group>
                     </group>
